@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boutons en forme de croix</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: auto 200px auto;
+      grid-template-rows: auto 200px auto;
+      gap: 40px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .button {
+      width: 200px;
+      height: 60px;
+      font-size: 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .button-top {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .button-bottom {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    .button-left {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .button-right {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="button button-top" id="buttonTop">AVANCER</button>
+    <button class="button button-left" id="buttonLeft">GAUCHE</button>
+    <button class="button button-right" id="buttonRight">DROITE</button>
+    <button class="button button-bottom" id="buttonBottom">RECULER</button>
+  </div>
+
+  <script>
+    const buttonTop = document.getElementById('buttonTop');
+    const buttonLeft = document.getElementById('buttonLeft');
+    const buttonRight = document.getElementById('buttonRight');
+    const buttonBottom = document.getElementById('buttonBottom');
+
+    buttonTop.addEventListener('click', function() {
+      // Envoyer l'événement de clic à du code Python
+      fetch('/api/button-click', {
+        method: 'POST',
+        body: JSON.stringify({ button: 'top' }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    });
+
+    buttonLeft.addEventListener('click', function() {
+      // Envoyer l'événement de clic à du code Python
+      fetch('/api/button-click', {
+        method: 'POST',
+        body: JSON.stringify({ button: 'left' }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    });
+
+    buttonRight.addEventListener('click', function() {
+      // Envoyer l'événement de clic à du code Python
+      fetch('/api/button-click', {
+        method: 'POST',
+        body: JSON.stringify({ button: 'right' }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    });
+
+    buttonBottom.addEventListener('click', function() {
+      // Envoyer l'événement de clic à du code Python
+      fetch('/api/button-click', {
+        method: 'POST',
+        body: JSON.stringify({ button: 'bottom' }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    });
+  </script>
+</body>
+</html>
